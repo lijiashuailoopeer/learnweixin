@@ -46,14 +46,6 @@ class WechatController extends Controller
                         break;
                     case 'unsubscribe':
                         break;
-                    case "CLICK":
-                        $content = $message->EventKey;
-                        if($content == 'appointment')
-                        {
-                            return config('api.wx_appointment_msg');
-                        }
-
-                        break;
                     default:
                         break;
                 }
@@ -62,6 +54,19 @@ class WechatController extends Controller
         });
 //        Log::info('return response.');
         return $wechat->server->serve();
+    }
+
+    public function menu()
+    {
+        if(env('APP_ENV') != 'local')
+        {
+            $app = new Application($this->options);
+            $menu = $app->menu;
+            $menu->destroy();
+            $menu->add(config('api.wechat_menus'));
+        }else{
+            App:abort('404');
+        }
     }
 
 

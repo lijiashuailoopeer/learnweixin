@@ -18,5 +18,17 @@ return array(
             'scopes'   => ['snsapi_userinfo'],
             'callback' => '/wechat/callback',
         ],
+    ],
+    'wechat_menus' => [
+        [
+            'type' => 'view',
+            'name' => '我要加分',
+            'url' => 'https://www.baidu.com'
+        ],
+        [
+            'type' => 'view',
+            'name' => '我要减分',
+            'url' => 'https://www.baidu.com'
+        ],
     ]
 );
